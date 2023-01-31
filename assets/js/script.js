@@ -40,10 +40,15 @@ for (let index = 0; index < blockTimes.length; index++) {
 
 $('.saveBtn').on("click",function()
 {
-    let saveText = $(this).parent().parent().children().eq(1).children().val()
-    /* let saveText = this.parent.parent.children[1].children
-    appointmentTime = this.parent.siblings($(''))
-    localStorage.setItem("")
-    console.log(this) */
+    // let saveText = $(this).parent().parent().children().eq(1).children().val();
+   //  let appointmentTime = $(this).parent().parent().children().eq(1).children();
+    let userSavedText = [{
+        saveText:  $(this).parent().parent().children().eq(1).children().val()
+        },
+        {
+        appointmentTime: $(this).parent().parent().children().eq(1).children().id
+        },
+    ] 
 
+     localStorage.setItem("savedText", JSON.stringify(userSavedText))
 })
