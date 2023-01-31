@@ -27,19 +27,23 @@ blockList = [
 ]
 
 for (let index = 0; index < blockTimes.length; index++) {
-    console.log(moment().isBefore(blockTimes[index]))
     if (moment().isBefore(blockTimes[index])) {
         blockList[index].toggleClass("future")
     }
-    console.log(moment().isAfter(blockTimes[index]))
-    if (moment().isAfter(blockTimes[index])) {
+    else if (moment().isAfter(blockTimes[index])) {
         blockList[index].toggleClass("past")
     }
     else {
         blockList[index].toggleClass("present")
     }
-    
 }
 
+$('.saveBtn').on("click",function()
+{
+    let saveText = $(this).parent().parent().children().eq(1).children().val()
+    /* let saveText = this.parent.parent.children[1].children
+    appointmentTime = this.parent.siblings($(''))
+    localStorage.setItem("")
+    console.log(this) */
 
-
+})
