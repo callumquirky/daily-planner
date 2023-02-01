@@ -47,39 +47,12 @@ function setTasks() {
     console.log($('#9AM-textarea').attr("id"))
     console.log(savedTasks[0].appointmentTime)
     for (let i = 0; i < savedTasks.length; i++) {
-        if(savedTasks[i].appointmentTime === $('#9AM-textarea').attr("id")) {
-            $('#9AM-textarea').text(savedTasks[i].saveText)
-        }
-        else if(savedTasks[i].appointmentTime === $('#10AM-textarea').attr("id")) {
-            $('#10AM-textarea').text(savedTasks[i].saveText)
-        }
-        else if(savedTasks[i].appointmentTime === $('#11AM-textarea').attr("id")) {
-            $('#11AM-textarea').text(savedTasks[i].saveText)
-        }
-        else if(savedTasks[i].appointmentTime === $('#12PM-textarea').attr("id")) {
-            $('#12PM-textarea').text(savedTasks[i].saveText)
-        }
-        else if(savedTasks[i].appointmentTime === $('#1PM-textarea').attr("id")) {
-            $('#1PM-textarea').text(savedTasks[i].saveText)
-        }
-        else if(savedTasks[i].appointmentTime === $('#2PM-textarea').attr("id")) {
-            $('#2PM-textarea').text(savedTasks[i].saveText)
-        }
-        else if(savedTasks[i].appointmentTime === $('#3PM-textarea').attr("id")) {
-            $('#3PM-textarea').text(savedTasks[i].saveText)
-        }
-        else if(savedTasks[i].appointmentTime === $('#4PM-textarea').attr("id")) {
-            $('#4PM-textarea').text(savedTasks[i].saveText)
-        }
-        else if(savedTasks[i].appointmentTime === $('#5PM-textarea').attr("id")) {
-            $('#5PM-textarea').text(savedTasks[i].saveText)
-        }
-        else {
-            return;
-        }
-    }
+        $(`#${savedTasks[i].appointmentTime}`).text(savedTasks[i].saveText) 
+    } 
 
 }
+
+
 
 $('.saveBtn').on("click",function()
 {
