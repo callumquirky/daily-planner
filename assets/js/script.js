@@ -46,7 +46,7 @@ $('.saveBtn').on("click",function()
         saveText:  $(this).parent().parent().children().eq(1).children().val()
         },
         {
-        appointmentTime: $(this).parent().parent().children().eq(1).children().id
+        appointmentTime: $(this).parent().parent().children().eq(1).children().attr("id")
         },
     ] 
 
