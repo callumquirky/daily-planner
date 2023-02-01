@@ -1,3 +1,5 @@
+let savedTasks = JSON.parse(localStorage.getItem('savedTasks')) ?? [];
+
 let currentDate = $('#currentDay');
 let todayDate = moment().format("dddd, MMMM Do YYYY");
 currentDate.text(todayDate);
@@ -26,6 +28,8 @@ blockList = [
     $('#5PM-textarea'),
 ]
 
+setTasks();
+
 for (let index = 0; index < blockTimes.length; index++) {
     if (moment().isBefore(blockTimes[index])) {
         blockList[index].toggleClass("future")
@@ -38,17 +42,59 @@ for (let index = 0; index < blockTimes.length; index++) {
     }
 }
 
+function setTasks() {
+    let savedTasks = JSON.parse(localStorage.getItem('savedTasks')) ?? [];
+    console.log($('#9AM-textarea').attr("id"))
+    console.log(savedTasks[0].appointmentTime)
+    for (let i = 0; i < savedTasks.length; i++) {
+        if(savedTasks[i].appointmentTime === $('#9AM-textarea').attr("id")) {
+            $('#9AM-textarea').text(savedTasks[i].saveText)
+        }
+        else if(savedTasks[i].appointmentTime === $('#10AM-textarea').attr("id")) {
+            $('#10AM-textarea').text(savedTasks[i].saveText)
+        }
+        else if(savedTasks[i].appointmentTime === $('#11AM-textarea').attr("id")) {
+            $('#11AM-textarea').text(savedTasks[i].saveText)
+        }
+        else if(savedTasks[i].appointmentTime === $('#12PM-textarea').attr("id")) {
+            $('#12PM-textarea').text(savedTasks[i].saveText)
+        }
+        else if(savedTasks[i].appointmentTime === $('#1PM-textarea').attr("id")) {
+            $('#1PM-textarea').text(savedTasks[i].saveText)
+        }
+        else if(savedTasks[i].appointmentTime === $('#2PM-textarea').attr("id")) {
+            $('#2PM-textarea').text(savedTasks[i].saveText)
+        }
+        else if(savedTasks[i].appointmentTime === $('#3PM-textarea').attr("id")) {
+            $('#3PM-textarea').text(savedTasks[i].saveText)
+        }
+        else if(savedTasks[i].appointmentTime === $('#4PM-textarea').attr("id")) {
+            $('#4PM-textarea').text(savedTasks[i].saveText)
+        }
+        else if(savedTasks[i].appointmentTime === $('#5PM-textarea').attr("id")) {
+            $('#5PM-textarea').text(savedTasks[i].saveText)
+        }
+        else {
+            return;
+        }
+    }
+
+}
+
 $('.saveBtn').on("click",function()
 {
-    // let saveText = $(this).parent().parent().children().eq(1).children().val();
-   //  let appointmentTime = $(this).parent().parent().children().eq(1).children();
-    let userSavedText = [{
-        saveText:  $(this).parent().parent().children().eq(1).children().val()
-        },
-        {
-        appointmentTime: $(this).parent().parent().children().eq(1).children().attr("id")
-        },
-    ] 
+    let savedTasks = JSON.parse(localStorage.getItem('savedTasks')) ?? [];
+    let userSavedText = {
+        saveText:  $(this).parent().parent().children().eq(1).children().val(),
 
-     localStorage.setItem("savedText", JSON.stringify(userSavedText))
+        appointmentTime: $(this).parent().parent().children().eq(1).children().attr("id")
+        }
+    for (let i = 0; i < savedTasks.length; i++) {
+        if(userSavedText.appointmentTime === savedTasks[i].appointmentTime){
+            localStorage.removeItem(savedTasks[i])
+        }
+    }
+    savedTasks.push(userSavedText)
+    localStorage.setItem("savedTasks", JSON.stringify(savedTasks))
+    setTasks();
 })
