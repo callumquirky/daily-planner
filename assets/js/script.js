@@ -70,4 +70,12 @@ $('.saveBtn').on("click",function()
     savedTasks.push(userSavedText)
     localStorage.setItem("savedTasks", JSON.stringify(savedTasks))
     setTasks();
+    let confirmDiv = $('.confirm-message')
+    let confirmMessage = $('<h3>').text(`Saved, new event stored in ${$(this).parent().parent().children().eq(1).children().attr("id")}!`)
+    confirmMessage.attr("class", 'confirm');
+    $(confirmDiv).append(confirmMessage);
+    setTimeout(function(){
+        confirmMessage.attr("class", "hide")
+    }, 4500)
+    
 })
