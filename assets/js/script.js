@@ -2,6 +2,7 @@ let savedTasks = JSON.parse(localStorage.getItem('savedTasks')) ?? [];
 
 let currentDate = $('#currentDay');
 let todayDate = moment().format("dddd, MMMM Do YYYY");
+
 currentDate.text(todayDate);
 
 blockTimes = [
@@ -31,7 +32,7 @@ blockList = [
 setTasks();
 
 for (let index = 0; index < blockTimes.length; index++) {
-    if (moment().isBefore(blockTimes[index])) {
+    if (moment().isBefore(blockTimes[index]).) {
         blockList[index].toggleClass("future")
     }
     else if (moment().isAfter(blockTimes[index])) {
@@ -44,8 +45,6 @@ for (let index = 0; index < blockTimes.length; index++) {
 
 function setTasks() {
     let savedTasks = JSON.parse(localStorage.getItem('savedTasks')) ?? [];
-    console.log($('#9AM-textarea').attr("id"))
-    console.log(savedTasks[0].appointmentTime)
     for (let i = 0; i < savedTasks.length; i++) {
         $(`#${savedTasks[i].appointmentTime}`).text(savedTasks[i].saveText) 
     } 

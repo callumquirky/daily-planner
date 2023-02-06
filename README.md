@@ -13,3 +13,11 @@ Local storage is utilised so that tasks and to-dos will persist on the page even
 In addition to this, when the user saves their tasks a confirmation message will appear at the top of the screen that will disappear after 4.5 seconds.
 
 ![confirmation](assets\images\confirmation.PNG)
+
+## Deployed Application
+
+The deployed application can be accessed at the following link: https://callumquirky.github.io/daily-planner/ please enjoy!
+
+## License
+
+This project utilises a MIT license.
