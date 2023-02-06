@@ -32,7 +32,7 @@ blockList = [
 setTasks();
 
 for (let index = 0; index < blockTimes.length; index++) {
-    if (moment().isBefore(blockTimes[index]).) {
+    if (moment().isBefore(blockTimes[index])) {
         blockList[index].toggleClass("future")
     }
     else if (moment().isAfter(blockTimes[index])) {
